@@ -1,1 +1,7 @@
 theme: jekyll-theme-cayman
+
+title: jake
+description: CLI for personal tools
+
+show_downloads: true
+google_analytics: UA-65961333-1
