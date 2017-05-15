@@ -1,0 +1,5 @@
+jake.egg-info/
+venv/
+**/*.pyc
+jake_data.json
+**/.DS_Store
