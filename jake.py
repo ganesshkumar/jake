@@ -49,5 +49,5 @@ def uncheck(id):
 @tasks.command()
 @click.argument('id', type=click.INT, required=True)
 def remove(id):
-	"""remove the task"""
+	"""remove a task"""
 	tasks_manager.remove(id)
