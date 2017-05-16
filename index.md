@@ -59,3 +59,16 @@ Remove a task
 ```
 $ jake tasks remove <task_id>
 ```
+
+Search for tasks
+```
+$ jake tasks list -s <search_term>
+```
+
+Case sensitive search
+```
+$ jake tasks list -s <search_term> -cs
+```
+
+## Special Symbols
+`@`, `#` and `:` are recognised by jake. You can use it to add context to the task(this should be made searchable soon).
