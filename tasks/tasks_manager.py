@@ -5,16 +5,16 @@ def add(text):
 	id = tasks.add(text)
 	click.echo(click.style('Task #{} successfully added'.format(id), fg='green'))
 
-def get_all():
-	task_list = tasks.get_all()	
+def get_all(search_term, case_sensitive):
+	task_list = tasks.get_all(search_term, case_sensitive)	
 	print_tasks(task_list)
 
-def get_completed_tasks():
-	task_list = tasks.completed()
+def get_completed_tasks(search_term, case_sensitive):
+	task_list = tasks.completed(search_term, case_sensitive)
 	print_tasks(task_list)
 
-def get_active_tasks():
-	task_list = tasks.active()
+def get_active_tasks(search_term, case_sensitive):
+	task_list = tasks.active(search_term, case_sensitive)
 	print_tasks(task_list)
 
 def check(task_id):
@@ -31,6 +31,16 @@ def remove(task_id):
 
 def print_tasks(tasks):
 	for index, task in enumerate(tasks):
-		text = u'{} {} {}'.format(u'\u2713' if task['completed'] else ' ', task.eid, task['text'])
-		text = click.style(text, fg='green') if task['completed'] else text
+		text = u'{} {} {}'.format(u'\u2713' if task['completed'] else u'\u00b7', task.eid, task['text'])
+		text = ' '.join([__style_keyword(text_part, task) for text_part in text.split()])
 		click.echo(text)
+
+def __style_keyword(keyword, task):
+	if keyword.startswith('@'):
+		return click.style(keyword, fg='cyan')
+	elif keyword.startswith(':'):
+		return click.style(keyword, fg='magenta')
+	elif keyword.startswith('#'):
+		return click.style(keyword, fg='blue')
+	else:
+		return click.style(keyword, fg='green' if task['completed'] else 'white')

@@ -23,16 +23,18 @@ def add(task):
 	tasks_manager.add(task)
 
 @tasks.command()
-@click.option('-a', 'filter', flag_value='ALL')
-@click.option('-c', 'filter', flag_value='COMPLETED')
-def list(filter):
-	"""list active tasks. -c to list completed tasks and -a to list all tasks"""
+@click.option('-a', 'filter', flag_value='ALL', help='show all tasks')
+@click.option('-c', 'filter', flag_value='COMPLETED', help='show completed tasks')
+@click.option('-s', default=None, type=click.STRING, help='search term')
+@click.option('-cs', 'case_sensitive', flag_value=True, help='case sensitive search')
+def list(filter, s, case_sensitive=False):
+	"""list active tasks. -c to list completed tasks, -a to list all tasks and -s <search_term> to search tasks"""
 	if filter == 'ALL':
-		tasks_manager.get_all()
+		tasks_manager.get_all(s, case_sensitive)
 	elif filter == 'COMPLETED':
-		tasks_manager.get_completed_tasks()
+		tasks_manager.get_completed_tasks(s, case_sensitive)
 	else:
-		tasks_manager.get_active_tasks()
+		tasks_manager.get_active_tasks(s, case_sensitive)
 
 @tasks.command()
 @click.argument('id', type=click.INT, required=True)
