@@ -29,6 +29,8 @@ def remove(task_id):
 	return tasks.update({'active': False},  eids=[task_id])
 
 def __compare(val, search_term, case_sensitive):
+	if search_term is None:
+		return True
 	search_term = __normalize('(^|.*\\s){}($|\\s.*)'.format(search_term))
 	pattern = re.compile(search_term) if case_sensitive else re.compile(search_term, re.IGNORECASE)
 	return pattern.match(val)
