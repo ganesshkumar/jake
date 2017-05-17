@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='jake',
-    version='0.0.3',
+    version='0.0.4',
     description='CLI for personal tools',
     author='Ganessh Kumar R P',
     author_email='rpganesshkumar@gmail.com',

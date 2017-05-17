@@ -1,8 +1,8 @@
 import re
-from db import db
+from db import get_table
 from tinydb import Query
 
-tasks = db.table('tasks')
+tasks = get_table('tasks')
 
 def add(text):
 	return tasks.insert({'text': text, 'completed': False, 'active': True})

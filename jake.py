@@ -4,7 +4,7 @@ import sys
 from tasks import tasks_manager
 
 @click.group()
-@click.version_option(version='0.0.2')
+@click.version_option(version='0.0.4')
 def cli():
   """CLI for personal tools"""
   pass

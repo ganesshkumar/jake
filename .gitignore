@@ -1,4 +1,5 @@
 jake.egg-info/
+dist/
 venv/
 **/*.pyc
 jake_data.json
